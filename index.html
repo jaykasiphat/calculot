@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Indices Lot Size Calculator</title>
+</head>
+<body>
+  <header>
+    <a href="#">Devy</a>
+    <h1>Indices Lot Size Calculator</h1>
+    <p>Calculate lot size in proportion to the risk given.</p>
+  </header>
+  <main>
+    <form>
+      <select name="index" id="index-select">
+        <option value="us30" selected>US30</option>
+        <option value="de30">DE30</option>
+        <option value="nas100">NAS100</option>
+      </select>
+      <label for="index-select">Index</label>
+
+      <label for="risk-input">Risk in %</label>
+      <input type="text" name="risk" id="risk-input">
+
+      <label for="account-size-input">Account size</label>
+      <input type="text" name="account-size" id="account-size-input">
+
+      <label for="stop-loss-input">Stop loss points</label>
+      <input type="text" name="stop-loss" id="stop-loss-input">
+
+      <label for="contract-size-select">Contract size</label>
+      <select name="contract-size" id="contract-size-select">
+        <option value="1" selected>1</option>
+        <option value="10">10</option>
+      </select>
+
+      <label for="lot-size-input">Lot size</label>
+      <input type="text" name="lot-size" id="lot-size-input">
+
+      <button>Calculate</button>
+    </form>
+  </main>
+</body>
+</html>
