@@ -5,14 +5,21 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Indices Lot Size Calculator</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"> 
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
   <header>
-    <a href="#">Devy</a>
-    <h1>Indices Lot Size Calculator</h1>
-    <p>Calculate lot size in proportion to the risk given.</p>
+    <div class="wrapper">
+      <a href="#">Devy</a>
+      <h1>Indices Lot Size Calculator</h1>
+      <p>Calculate lot size in proportion to the risk given.</p>
+    </div>
   </header>
-  <main>
+  <main class="wrapper">
     <form>
       <select name="index" id="index-select">
         <option value="us30" selected>US30</option>
@@ -21,25 +28,39 @@
       </select>
       <label for="index-select">Index</label>
 
-      <label for="risk-input">Risk in %</label>
-      <input type="text" name="risk" id="risk-input">
+      <fieldset>
+        <div>
+          <label for="risk-input">Risk in %</label>
+          <input type="text" name="risk" id="risk-input">
+        </div>
+  
+        <div>
+          <label for="account-size-input">Account size</label>
+          <input type="text" name="account-size" id="account-size-input">
+        </div>
+  
+        <div>
+          <label for="stop-loss-input">Stop loss points</label>
+          <input type="text" name="stop-loss" id="stop-loss-input">
+        </div>
+  
+        <div>
+          <label for="contract-size-select">Contract size</label>
+          <select name="contract-size" id="contract-size-select">
+            <option value="1" selected>1</option>
+            <option value="10">10</option>
+          </select>
+        </div>
+      </fieldset>
 
-      <label for="account-size-input">Account size</label>
-      <input type="text" name="account-size" id="account-size-input">
+      <div>
+        <label for="lot-size-input">Lot size</label>
+        <input type="text" name="lot-size" id="lot-size-input">
+      </div>
 
-      <label for="stop-loss-input">Stop loss points</label>
-      <input type="text" name="stop-loss" id="stop-loss-input">
-
-      <label for="contract-size-select">Contract size</label>
-      <select name="contract-size" id="contract-size-select">
-        <option value="1" selected>1</option>
-        <option value="10">10</option>
-      </select>
-
-      <label for="lot-size-input">Lot size</label>
-      <input type="text" name="lot-size" id="lot-size-input">
-
-      <button>Calculate</button>
+      <div>
+        <button>&check; Calculate</button>
+      </div>      
     </form>
   </main>
 </body>
