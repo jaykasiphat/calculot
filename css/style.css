@@ -1,0 +1,117 @@
+/*********************
+BASE
+*********************/
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+}
+
+header,
+form > div:last-child {
+  text-align: center;
+}
+
+header {
+  border-bottom: 1px solid #bbbfc1;
+  padding: 3rem 0;
+}
+
+h1 {
+  font-size: 2.2rem;
+}
+
+a {
+  color: #000;
+}
+
+main {
+  padding: 2rem 0;
+}
+
+p, label[for="index-select"] {
+  color: #575f6e;
+  font-weight: 300;
+}
+
+.wrapper {
+  width: 90%;
+  margin: 0 auto;
+}
+
+/*********************
+FORM
+*********************/
+fieldset {
+  border: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 1.5rem;
+}
+
+input, select, button {
+  border: none;
+}
+
+input, select {
+  padding: 0.5rem;
+  outline: none;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  height: 3rem;
+  border-bottom: 1px solid #e2e4e5;
+}
+
+select {
+  width: 100%;
+  
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  
+  background-color: transparent;
+  background-image: url(data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMTAwMCAxMDAwIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPg0KICA8cGF0aCBmaWxsPSJncmF5IiBkPSJNMTAsMjMyLjdsNDkwLDUzNC41bDQ5MC01MzQuNUgxMHoiIC8+DQo8L3N2Zz4=);
+  background-repeat: no-repeat;
+  background-position: right;
+  background-size: 0.625rem;
+}
+
+input {
+  padding-left: 1rem;
+  /* Added for consistent rendering */
+  width: 100%;
+  display: block;
+}
+
+form > *,
+fieldset > * {
+  margin: 1.3rem 0;
+}
+
+button {
+  cursor: pointer;
+  background: #007aff;
+  color: #fff;
+  padding: 0.8rem 2.5rem;
+  border-radius: 0.3rem;
+  box-shadow: 0 .125rem .25rem rgba(0,0,0,.075);
+  transition: 0.2s;
+}
+
+button:hover {
+  background: #0062e2;
+}
+
+form > div:last-child {
+  margin: 2rem 0;
+}
+
+#index-select {
+  font-size: 1.5rem;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
