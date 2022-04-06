@@ -1,6 +1,17 @@
-const convertCurrency = (from, to, amount) => {
+// Form validation
+const throwError = (message) => {
+  throw new Error(message);
+}
+
+const convertCurrency = async (from, to, amount) => {
   const requestURL = `https://api.exchangerate.host/convert?from=${from}&to=${to}&amount=${amount}`;
-  return fetch(requestURL);
+  let response = await fetch(requestURL);
+
+  if (response.ok) {
+    return response;
+  }
+  
+  throwError(response.status);
 }
 
 const calculateLot = async () => {
@@ -14,10 +25,10 @@ const calculateLot = async () => {
     const lotSize = ((risk * 0.01 * accountSize) / sl) / contractSize;
     return Math.round((lotSize + Number.EPSILON) * 100) / 100;
   } else if (index === 'de30') {
-    const riskPerPointInUSD = (risk * 0.01 * accountSize) / sl;
-    const promise = await convertCurrency('USD', 'EUR', riskPerPointInUSD);
-    const json = await promise.json();
-    const riskPerPointInEUR = Number(json.result);
+    const riskPerPointInUSD = (risk * 0.01 * accountSize) / sl;    
+    const fetchResult = await convertCurrency('USD', 'EUR', riskPerPointInUSD);    
+    const json = await fetchResult.json();    
+    const riskPerPointInEUR = json.result || throwError('Rate conversion is null');
     const lotSize = riskPerPointInEUR / contractSize;
     return Math.round((lotSize + Number.EPSILON) * 100) / 100;
   }
@@ -27,7 +38,8 @@ const displayLot = async () => {
   let lotSizeInput = document.querySelector('#lot-size-input');
   lotSizeInput.value = '';
   lotSizeInput.setAttribute('placeholder', 'Loading...')
-  lotSizeInput.value = await calculateLot();
+  let lotSize = await calculateLot();  
+  lotSizeInput.value = lotSize;
 }
 
 let calculateButton = document.querySelector('#calculateBtn');
