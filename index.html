@@ -56,18 +56,24 @@
       <div class="rounding-options">
         <p>Rounding</p>
         <div>
-          <input type="radio" name="rounding" id="roundup-input" checked="checked">
-          <label for="roundup-input">
-            Round up
-            <span>0.055 = 0.06</span>
-          </label>
+          <input type="radio" name="rounding" id="round-input" checked="checked">
+          <label for="round-input">Round</label>
+          <span class="round-icon">&#9432;</span>
+          <div class="round-info">
+            <p>Round to the nearest hundredth</p>
+            <p>0.054 = 0.05</p>
+            <p>0.055 = 0.06</p>
+          </div>
         </div>
         <div>
-          <input type="radio" name="rounding" id="rounddown-input">
-          <label for="rounddown-input">
-            Round down
-            <span>0.055 = 0.05</span>
-          </label>
+          <input type="radio" name="rounding" id="truncate-input">
+          <label for="truncate-input">Truncate</label>
+          <span class="truncate-icon">&#9432;</span>
+          <div class="truncate-info">
+            <p>Minimize decimals to the nearest hundredth</p>
+            <p>0.054 = 0.05</p>
+            <p>0.055 = 0.05</p>
+          </div>
         </div>
       </div>
 
