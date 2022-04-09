@@ -34,7 +34,7 @@ main {
 p, label[for="index-select"],
 .rounding-options label,
 .rounding-options span,
-.rounding-info p,
+.round-info p,
 .truncate-info p {
   color: #575f6e;
 }
@@ -101,7 +101,7 @@ input {
 }
 
 input,
-.rounding-info,
+.round-info,
 .truncate-info {
   background: #fff;
 }
@@ -171,7 +171,7 @@ form > div:last-child {
   color: #0062e2;
 }
 
-.rounding-info,
+.round-info,
 .truncate-info {
   display: none;
   position: absolute;
@@ -203,7 +203,7 @@ form > div:last-child {
     padding: 0;
   }
 
-  .rounding-info,
+  .round-info,
   .truncate-info {
     width: 10rem;
   }
