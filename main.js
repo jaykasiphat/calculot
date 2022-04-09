@@ -1,6 +1,29 @@
-// TODO: Don't round lotSize up
+// TODO: % and Account size can't be negative numbers
 // TODO: Clean & refactor
 // TODO: Add comments
+
+function setVisibility(element) {
+  if (
+    !element.style.display
+    || element.style.display === "none"
+  ) {      
+    element.style.display = "block";
+  } else {
+    element.style.display = "none";
+  }
+}
+
+function showTip(evt) {
+  const roundingInfoDiv = document.querySelector(".round-info");
+  const truncateInfoDiv = document.querySelector(".truncate-info");
+  const iconClassName = evt.target.classList[0];
+
+  if (iconClassName === "round-icon") {
+    setVisibility(roundingInfoDiv);
+  } else {
+    setVisibility(truncateInfoDiv);
+  }
+}
 
 function throwError(message) {
   throw new Error(message);
@@ -40,7 +63,11 @@ async function calculateLot() {
   const contractSize = Number(
     document.querySelector("#contract-size-select").value
   );
+  const rounding = Array.from(
+    document.querySelectorAll("input[name='rounding']")
+  ).filter(input => input["checked"])[0];
   const positionArr = [index, risk, accountSize, sl, contractSize];
+  let lotSize;
 
   if (!validForm(positionArr)) {
     alert("The form is not valid. Please check your data.");
@@ -48,21 +75,24 @@ async function calculateLot() {
   }
 
   if (index === "us30" || index === "nas100") {
-    const lotSize = ((risk * 0.01 * accountSize) / sl) / contractSize;
-    return Math.round((lotSize + Number.EPSILON) * 100) / 100;
+    lotSize = ((risk * 0.01 * accountSize) / sl) / contractSize;
   } else if (index === "de30") {
     const riskPerPointInUSD = (risk * 0.01 * accountSize) / sl;
     const fetchResult = await convertCurrency("USD", "EUR", riskPerPointInUSD);
     const json = await fetchResult.json();
     const riskPerPointInEUR = json.result
                               || throwError("Rate conversion is null");
-    const lotSize = riskPerPointInEUR / contractSize;
+    lotSize = riskPerPointInEUR / contractSize;
 
-    console.log(`Risk per point (USD): ${riskPerPointInUSD}`);
-    console.log(`Risk per point (EUR): ${riskPerPointInEUR}`);
+    console.log(`DE30: Risk per point (USD): ${riskPerPointInUSD}`);
+    console.log(`DE30: Risk per point (EUR): ${riskPerPointInEUR}`);
+  }
 
+  if (rounding.id === "round-input") {
     return Math.round((lotSize + Number.EPSILON) * 100) / 100;
   }
+
+  return Math.floor(lotSize * 100) / 100;
 }
 
 async function displayLot() {
@@ -80,5 +110,8 @@ async function displayLot() {
   }
 }
 
+const icons = Array.from(document.querySelectorAll(".icon"));
 const calculateButton = document.querySelector("#calculateBtn");
+
+icons.forEach(element => element.addEventListener('click', showTip));
 calculateButton.addEventListener("click", displayLot);
