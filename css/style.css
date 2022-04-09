@@ -31,8 +31,14 @@ main {
   padding: 2rem 0;
 }
 
-p, label[for="index-select"] {
+p, label[for="index-select"],
+.rounding-options label,
+.rounding-options span {
   color: #575f6e;
+}
+
+p,
+label[for="index-select"] {
   font-weight: 300;
 }
 
@@ -44,10 +50,14 @@ p, label[for="index-select"] {
 /*********************
 FORM
 *********************/
+fieldset, 
+.rounding-options {
+  display: grid;
+}
+
 fieldset {
   border: 0;
   padding: 0;
-  display: grid;
   grid-template-columns: 1fr 1fr;
   column-gap: 1.5rem;
 }
@@ -114,6 +124,30 @@ form > div:last-child {
   font-size: 1.5rem;
   font-weight: 500;
   margin-bottom: 0.5rem;
+}
+
+.rounding-options {
+  grid-template-columns: 1fr 1fr 1fr;
+  align-items: start;
+}
+
+.rounding-options p {
+  color: #000;
+  font-weight: normal;
+  margin-top: 0;
+}
+
+.rounding-options input {
+  width: 1rem;
+  height: auto;
+  display: inline-block;
+}
+
+.rounding-options span {
+  display: block;
+  font-size: 0.8rem;
+  padding-left: 1.3rem;
+  color: #bbbfc1;
 }
 
 @media screen and (min-width: 768px) {
