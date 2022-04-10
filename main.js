@@ -28,6 +28,27 @@ function throwError(message) {
   throw new Error(message);
 }
 
+function getFormData() {
+  const index = document.querySelector("#index-select").value;
+  const rounding = Array.from(
+    document.querySelectorAll("input[name='rounding']")
+  ).filter(input => input["checked"])[0];
+  const risk = Number(
+    document.querySelector("#risk-input").value
+  );
+  const accountSize = Number(
+    document.querySelector("#account-size-input").value
+  );
+  const sl = Math.abs(Number(
+    document.querySelector("#stop-loss-input").value
+  ));
+  const contractSize = Number(
+    document.querySelector("#contract-size-select").value
+  );
+
+  return [index, rounding, risk, accountSize, sl, contractSize];
+}
+
 function validForm(arr) {  
   return (
     arr.every((num) => num > 0)
@@ -48,22 +69,7 @@ async function convertCurrency(from, to, amount) {
 }
 
 async function calculateLot() {
-  const index = document.querySelector("#index-select").value;
-  const risk = Number(
-    document.querySelector("#risk-input").value
-  );
-  const accountSize = Number(
-    document.querySelector("#account-size-input").value
-  );
-  const sl = Math.abs(Number(
-    document.querySelector("#stop-loss-input").value
-  ));
-  const contractSize = Number(
-    document.querySelector("#contract-size-select").value
-  );
-  const rounding = Array.from(
-    document.querySelectorAll("input[name='rounding']")
-  ).filter(input => input["checked"])[0];
+  const [index, rounding, risk, accountSize, sl, contractSize] = getFormData();
   const positionArr = [risk, accountSize, sl, contractSize];
   let lotSize;
 
