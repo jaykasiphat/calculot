@@ -1,4 +1,3 @@
-// TODO: % and Account size can't be negative numbers
 // TODO: Clean & refactor
 // TODO: Add comments
 
@@ -29,10 +28,9 @@ function throwError(message) {
   throw new Error(message);
 }
 
-function validForm(arr) {
-  // Check if inputs are numbers without 0
+function validForm(arr) {  
   return (
-    !arr.includes(0)
+    arr.every((num) => num > 0)
     && arr.every((num) => !Number.isNaN(num))
   );
 }
@@ -57,16 +55,16 @@ async function calculateLot() {
   const accountSize = Number(
     document.querySelector("#account-size-input").value
   );
-  const sl = Number(
+  const sl = Math.abs(Number(
     document.querySelector("#stop-loss-input").value
-  );
+  ));
   const contractSize = Number(
     document.querySelector("#contract-size-select").value
   );
   const rounding = Array.from(
     document.querySelectorAll("input[name='rounding']")
   ).filter(input => input["checked"])[0];
-  const positionArr = [index, risk, accountSize, sl, contractSize];
+  const positionArr = [risk, accountSize, sl, contractSize];
   let lotSize;
 
   if (!validForm(positionArr)) {
