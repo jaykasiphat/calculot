@@ -5,7 +5,7 @@ function setVisibility(element) {
   if (
     !element.style.display
     || element.style.display === "none"
-  ) {      
+  ) {
     element.style.display = "block";
   } else {
     element.style.display = "none";
@@ -49,7 +49,7 @@ function getFormData() {
   return [index, rounding, risk, accountSize, sl, contractSize];
 }
 
-function validForm(arr) {  
+function validForm(arr) {
   return (
     arr.every((num) => num > 0)
     && arr.every((num) => !Number.isNaN(num))
