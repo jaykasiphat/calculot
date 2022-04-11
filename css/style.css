@@ -49,6 +49,10 @@ label[for="index-select"] {
   margin: 0 auto;
 }
 
+.hidden {
+  display: none;
+}
+
 /*********************
 FORM
 *********************/
@@ -173,7 +177,6 @@ form > div:last-child {
 
 .round-info,
 .truncate-info {
-  display: none;
   position: absolute;
   width: 7rem;
   border: 1px solid #e2e4e5;
