@@ -1,0 +1,26 @@
+{
+  "name": "lot-size-calc",
+  "version": "0.0.5",
+  "description": "Indices and forex lot size calculator",
+  "main": "main.js",
+  "scripts": {
+    "lint": "eslint src/main.js",
+    "doc": "jsdoc -c jsdoc.json"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jaykasiphat/calculot.git"
+  },
+  "author": "Jay Kasiphat",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jaykasiphat/calculot/issues"
+  },
+  "homepage": "https://github.com/jaykasiphat/calculot#readme",
+  "devDependencies": {
+    "eslint": "^8.13.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.26.0",
+    "jsdoc": "^3.6.10"
+  }
+}
