@@ -1,3 +1,18 @@
+/**
+ * @file main.js: Main file
+ * @author Jay Kasiphat
+ * @see <a href="https://github.com/jaykasiphat">Jay's Github<a>
+ */
+
+/**
+ * @typedef {Object} MouseEvent
+ */
+
+/**
+ * Set element's display property to none
+ * @param {HTMLElement} element - HTML element
+ * @returns {void}
+ */
 function setVisibility(element) {
   if (Array.from(element.classList).includes('hidden')) {
     element.classList.remove('hidden');
@@ -6,6 +21,11 @@ function setVisibility(element) {
   }
 }
 
+/**
+ * Set visibility for rounding/truncating info div
+ * @param {MouseEvent} evt - Click event
+ * @returns {void}
+ */
 function showTip(evt) {
   const roundingInfoDiv = document.querySelector('.round-info');
   const truncateInfoDiv = document.querySelector('.truncate-info');
@@ -18,10 +38,19 @@ function showTip(evt) {
   }
 }
 
+/**
+ * Throw an error from the provided message
+ * @param {string} message
+ * @returns {void}
+ */
 function throwError(message) {
   throw new Error(message);
 }
 
+/**
+ * Get HTML form data
+ * @returns {Array}
+ */
 function getFormData() {
   const index = document.querySelector('#index-select').value;
   const roundingInputs = document.querySelectorAll("input[name='rounding']");
@@ -40,6 +69,11 @@ function getFormData() {
   return [index, rounding, risk, accountSize, sl, contractSize];
 }
 
+/**
+ * Returns true if every number is greater than 0 and is not NaN, false otherwise
+ * @param {Array<number>} arr - Array of position data
+ * @returns {boolean}
+ */
 function validForm(arr) {
   return (
     arr.every((num) => num > 0)
@@ -47,6 +81,13 @@ function validForm(arr) {
   );
 }
 
+/**
+ * Convert an amount of base currency to desired currency
+ * @param {string} from - Base currency
+ * @param {string} to - Conversion currency
+ * @param {number} amount - Amount to be converted
+ * @returns {Promise} - Promise object of conversion rate
+ */
 async function convertCurrency(from, to, amount) {
   const requestURL = 'https://api.exchangerate.host/'
                       + `convert?from=${from}&to=${to}&amount=${amount}`;
@@ -59,6 +100,10 @@ async function convertCurrency(from, to, amount) {
   return response;
 }
 
+/**
+ * Returns the calculated lot size
+ * @returns {Promise} - Promise object of calculated lot size
+ */
 async function calculateLot() {
   const [index, rounding, risk, accountSize, sl, contractSize] = getFormData();
   const positionArr = [risk, accountSize, sl, contractSize];
@@ -90,6 +135,10 @@ async function calculateLot() {
   return Math.floor(lotSize * 100) / 100;
 }
 
+/**
+ * Display the lot size in an HTML input
+ * @returns {void}
+ */
 async function displayLot() {
   const lotSizeInput = document.querySelector('#lot-size-input');
   lotSizeInput.value = '';
@@ -103,7 +152,16 @@ async function displayLot() {
   }
 }
 
+/**
+ * Span elements containing icons
+ * @type {Array}
+ */
 const icons = Array.from(document.querySelectorAll('.icon'));
+
+/**
+ * Button element
+ * @type {Object}
+ */
 const calculateButton = document.querySelector('#calculateBtn');
 
 icons.forEach((element) => element.addEventListener('click', showTip));
