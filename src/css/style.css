@@ -16,20 +16,16 @@ form > div:last-child {
 
 header {
   border-bottom: 1px solid #bbbfc1;
-  padding: 3rem 0;
+  padding: 1rem 0;
 }
 
 h1 {
   font-size: 2.2rem;
-  margin-top: 0.3rem;
+  margin: 0.3rem 0;
 }
 
 a {
   color: #000;
-}
-
-main {
-  padding: 2rem 0;
 }
 
 img {
@@ -111,6 +107,11 @@ input {
   /* Added for consistent rendering */
   width: 100%;
   display: block;
+}
+
+input:disabled {
+  -webkit-text-fill-color: #000;
+  opacity: 1;
 }
 
 input,
@@ -201,7 +202,7 @@ form > div:last-child {
 
   header {
     border: none;
-    padding: 2.55rem 0;
+    padding: 1.5rem 0;
   }
 
   form {
@@ -213,7 +214,7 @@ form > div:last-child {
   }
 
   main {
-    padding: 0;
+    padding-bottom: 1.5rem;
   }
 
   .round-info,
