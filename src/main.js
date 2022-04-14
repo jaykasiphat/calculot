@@ -9,6 +9,14 @@
  */
 
 /**
+ * Return the current year
+ * @returns {number} - current year
+ */
+function currentYear() {
+  return new Date().getFullYear();
+}
+
+/**
  * Set element's display property to none
  * @param {HTMLElement} element - HTML element
  * @returns {void}
@@ -70,7 +78,7 @@ function getFormData() {
 }
 
 /**
- * Returns true if every number is greater than 0 and is not NaN, false otherwise
+ * Return true if every number is greater than 0 and is not NaN, false otherwise
  * @param {Array<number>} arr - Array of position data
  * @returns {boolean}
  */
@@ -101,7 +109,7 @@ async function convertCurrency(from, to, amount) {
 }
 
 /**
- * Returns the calculated lot size
+ * Return the calculated lot size
  * @returns {Promise} - Promise object of calculated lot size
  */
 async function calculateLot() {
@@ -160,9 +168,16 @@ const icons = Array.from(document.querySelectorAll('.icon'));
 
 /**
  * Button element
- * @type {Object}
+ * @type {HTMLElement}
  */
 const calculateButton = document.querySelector('#calculateBtn');
 
+/**
+ * Span element
+ * @type {HTMLElement}
+ */
+const footerSpan = document.querySelector('footer span');
+
 icons.forEach((element) => element.addEventListener('click', showTip));
 calculateButton.addEventListener('click', displayLot);
+footerSpan.textContent = currentYear();

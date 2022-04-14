@@ -58,6 +58,10 @@ label[for="index-select"] {
   display: none;
 }
 
+footer {
+  text-align: center;
+}
+
 /*********************
 FORM
 *********************/
