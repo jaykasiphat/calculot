@@ -1,5 +1,5 @@
 # Calculot
-**Calculot** is a calculator for computing indices and forex lot sizes.
+**[Calculot](https://calculot.io/)** is a calculator for computing indices and forex lot sizes.
 
 ## Version
 **Current: 0.0.5**  
